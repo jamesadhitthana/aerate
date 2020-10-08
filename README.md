@@ -14,7 +14,7 @@ TODO: Me
 
 ### Features:
 
-![aerate-poster](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster.jpg?token=AINQE27MCKV4X7TENZ7PV2S7RA362)
+![aerate-poster-cropped](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster%20-%20cropped.jpg?token=AINQE23PEVUTNR56DMQ7HBC7RCDJ2)
 
 ## Hardware: Arduino
 
