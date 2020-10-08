@@ -1,0 +1,29 @@
+<style>
+    .james-loading-gradient {
+      background: linear-gradient(130deg, #798C93, #BFC6C6);
+    }
+
+    .james-good-gradient {
+      background: linear-gradient(130deg, #61C67D, #AAEBAC);
+    }
+
+    .james-moderate-gradient {
+      background: linear-gradient(130deg, #9ABE60, #D9EC93);
+    }
+
+    .james-unhealthy1-gradient {
+      background: linear-gradient(130deg, #FE9A71, #FFBC7A);
+    }
+
+    .james-unhealthy2-gradient {
+      background: linear-gradient(130deg, #FE9A71, #FFBC7A);
+    }
+
+    .james-red-gradient {
+      background: linear-gradient(130deg, #FE6B6F, #FF9C79);
+    }
+
+    .james-hazardous-gradient {
+      background: linear-gradient(130deg, #912B52, #E96569);
+    }
+  </style>

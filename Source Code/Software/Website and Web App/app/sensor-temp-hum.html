@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="James Adhitthana">
+
+  <title>aerate | Humidex Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+
+  <!----------------------------James Headers---------------------------->
+  <!-- Custom Font -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <!--Initialize Firebase API-->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+
+  <!--Load chart functions-->
+  <!--c3js (depreceated?)-->
+
+  <!---Load papa CSV Loader--->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"
+    integrity="sha256-Fh801SO9gqegfUdkDxyzXzIUPWzO/Vatqj8uN+5xcL4=" crossorigin="anonymous"></script>
+  <!--IziToast-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+    integrity="sha256-321PxS+POvbvWcIVoRZeRmf32q7fTFQJ21bXwTNWREY=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+    integrity="sha256-f6fW47QDm1m01HIep+UjpCpNwLVkBYKd+fhpb4VQ+gE=" crossorigin="anonymous" />
+  <!--push.js Javascript Desktop Notifications-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"
+    integrity="sha256-TzCZHC7V5wLIgeSjxMcAuOnxj4vQ3ta5XRdAQTC8cu8=" crossorigin="anonymous"></script>
+  <!--Raphael (SVG Library *needed for gage)-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"
+    integrity="sha256-TabprKdeNXbSesCWLMrcbWSDzUhpAdcNPe5Q53rn9Yg=" crossorigin="anonymous"></script>
+  <!--JustGage-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.3.5/justgage.min.js"
+    integrity="sha256-g9/gUQRakDEO4eWEaLwfNA/B99XHDc2A+G5q9J7ZXaA=" crossorigin="anonymous"></script>
+  <!--Progressbar.js (for the overview circular charts)-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js"
+    integrity="sha256-c83qPqBpH5rEFQvgyTfcLufqoQIFFoqE5B71yeBXhLc=" crossorigin="anonymous"></script>
+  <!-- introjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"
+    integrity="sha256-fOPHmaamqkHPv4QYGxkiSKm7O/3GAJ4554pQXYleoLo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css"
+    integrity="sha256-/oZ7h/Jkj6AfibN/zTWrCoba0L+QhP9Tf/ZSgyZJCnY=" crossorigin="anonymous" />
+  <!-- cookiesjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"
+    integrity="sha256-oE03O+I6Pzff4fiMqwEGHbdfcW7a3GRRxlL+U49L5sA=" crossorigin="anonymous"></script>
+  <!--MomentJs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"
+        integrity="sha256-C66CaAImteEKZPYvgng9j10J/45e9sAuZyfPYCwp4gE=" crossorigin="anonymous"></script>
+  <!---Load James UNIFIED--->
+  <script src="outliers.js"></script>
+  <script src="AerateUnified.js"></script>
+  <script src="unified.js"></script>
+
+  <link rel="stylesheet" href="unifiedstyle.css">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-fan"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">aerate</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <!--Active means that it is currently selected-->
+        <a class="nav-link" href="index.html" data-toggle="tooltip" title="Dashboard">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Navigation
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog" data-toggle="tooltip" title="View sensors"></i>
+          <span data-toggle="tooltip" title="View sensors">Sensors</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Available Sensors:</h6>
+            <a class="collapse-item" href="index.html" data-toggle="tooltip" title="View all sensor data">All Sensors</a>
+            <a class="collapse-item" href="sensor-dust.html"data-toggle="tooltip" title="View dust sensor data">Dust (PM2.5)</a>
+            <a class="collapse-item" href="sensor-co2.html"data-toggle="tooltip" title="View CO2 sensor data">Carbon Dioxide (CO2)</a>
+            <a class="collapse-item" href="sensor-co.html"data-toggle="tooltip" title="View CO sensor data">Carbon Monoxide (CO)</a>
+            <a class="collapse-item active" href="sensor-temp-hum.html"data-toggle="tooltip" title="View Temperature & Humidity sensor data">Temperature and Humidity</a>
+            <a class="collapse-item" href="sensor-h2.html"data-toggle="tooltip" title="View h2 sensor data">Hydrogen (H2)</a>
+            <a class="collapse-item" href="sensor-smk.html"data-toggle="tooltip" title="View smoke sensor data">Smoke</a>
+            <a class="collapse-item" href="sensor-lpg.html"data-toggle="tooltip" title="View LPG sensor data">LPG</a>
+            <a class="collapse-item" href="sensor-alc.html"data-toggle="tooltip" title="View alcohol sensor data">Alcohol</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" data-toggle="tooltip" title="Toggle sidebar" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+
+    <!-- ----------------------------CENTER PAGE CONTENTS---------------------------- -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search [EDITED] -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                aria-label="Search" aria-describedby="basic-addon2" id="inputSearch">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                      aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter" id="alertsCenterCounter">
+                  <!--[DYNAMIC] alertsCenterCounter will update-->
+                </span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">Alerts Center</h6>
+                <div id="aerateAlertsCenter">
+                  <!--[DYNAMIC] Alerts will appear here-->
+                </div>
+                <a class="dropdown-item text-center small text-gray-500" href="#">That's all!</a>
+              </div>
+            </li>
+            <!-- Nav Item - Help Button -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="helpButton" data-toggle="tooltip" title="Help" role="button"
+                data-intro="<b>That's it!</b><br><br>If you need a refresher, just click here for help. Goodluck!"
+                data-step="6">
+                <i class="fas fa-question-circle fa-fw"></i>
+              </a>
+            </li>
+            <!--end of Help Button-->
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="userNameAndEmail" data-toggle="tooltip" title="Account">Anonymous</span>
+                <img class="img-profile rounded-circle" src="img/placeholder-avatar-60x60.png">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <!-- <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout/Login
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- -----------------------------------------Begin Page Content----------------------------------------- -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+            <!-- Calendar Form Input -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+              id="inputTargetDateForm">
+              <div class="input-group">
+                <input type="text" class="form-control bg-gray-200 border-0 small" placeholder="Pick date..."
+                  aria-label="Search" aria-describedby="basic-addon2" id="inputTargetDate">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" data-toggle="tooltip" title="Select date shown on the dashboard" id="refreshCalendarButton">
+                    <i class="fas fa-calendar fa-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Download button -->
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="generateReportButton" data-toggle="tooltip" title="Force reload database" ><i
+                class="fas fa-download fa-sm text-white-50"></i> Reload Database</a>
+          </div>
+
+
+
+
+
+
+          <!--=---------------------------=----------------=-=-=Row #1 (Air Quality Summary)-=----==-=-=--------------------------------------->
+          <!-- Content Row -->
+          <div class="row">
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4"
+                data-intro="This <b>gauge</b> shows you the latest concentration of the pollutant.<br><br> This is read like a gauge on your car, the <span style='color: green;font-weight:bold'>left side (green color) is safer</span> while the <span style='color: red;font-weight:bold'>right side gets more dangerous (red color)</span>.">
+                <!-- Card Header - Dropdown -->
+
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">"Feels Like" Temperature (Humidex)</h6>
+				<!-- ------Info button------ -->
+                  <!-- <a href="#/"> -->
+                  <i class="fas fa-info-circle james-cursor"
+                    aria-label="Information for: Latest pollutant concentration" data-toggle="tooltip"
+                    title='Using temperature and humidity data, this gauge calculates what the temperature actually "feels like" on your skin. This calculation is called the Humidex and is also used to tell you how comfortable the air is.'></i>
+                  <!-- </a> -->
+                  <!-- END OF: Info Button -->
+				</div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+				  
+				  
+                    <!--HumidexGauge-->
+                    <div id="humidexGauge"></div>
+                    <p class="text-center" id="humidexExplainer">loading..</p>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> No discomfort
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-warning"></i> Some discomfort
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-danger"></i> Dangerous
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Historical Data chart-->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4"
+                data-intro="This is a <b>quick explanation</b> of the pollutant. <br><br> This is actually an excerpt taken from the researcher's (James Adhitthana) paper.">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Humidex in a Nutshell</h6>
+				<!-- ------Info button------ -->
+                  <!-- <a href="#/"> -->
+                  <i class="fas fa-info-circle james-cursor"
+                    aria-label="Information for: Pollutant in a nutshell" data-toggle="tooltip"
+                    title="This is a quick summary of the pollutant (this information is an excerpt from the researcher's paper)."></i>
+                  <!-- </a> -->
+                  <!-- END OF: Info Button -->
+                </div>
+                <!-- Card Body -->
+                <div class="card-body my-auto ">
+                  <div class="chart-area">
+				  
+				  
+
+                    <h3 class="text-center mt-2">
+                      <b>What is Humidex ("Feels Like" Temperature)?</b>
+                    </h3>
+                    <p>
+                      <!-- (the higher the more optimized) -->
+                      The humidex short for humidity index measures the human-perceived equivalent temperature of the
+                      current environment by combining the actual air temperature and actual relative humidity values.
+                      This is also known as the apparent temperature or could also be simplified as the felt air
+                      temperature that a person feels. This is used usually as a type of discomfort index to measure
+                      comfort levels of an area.
+                      <br><br>
+                      By using the temperature and humidity values, the discomfort index
+                      justifies why in humid conditions, a person might argue say that the air "feels like" it is much hotter because
+                      of the less perspiration evaporating from the skin caused by high levels of humidity.
+                    </p>
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- --------------------------------------ROW #4 [Chart Row]-------------------------------------- -->
+          <!-- Content Row -->
+          <div class="row">
+
+
+
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4" data-intro="This colorful graph shows the <b>real-time pollutant data measured</b>.
+              <br><br>
+              You can hover on each point to view the data in more detail." data-scrollTo="tooltip">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Overview of Pollutants by Time</h6>
+				<!-- ------Info button------ -->
+                  <!-- <a href="#/"> -->
+                  <i class="fas fa-info-circle james-cursor"
+                    aria-label="Information for: Overview of Pollutants by Time" data-toggle="tooltip"
+                    title="This graph shows the changes in pollutant concentration as the day goes by. You can hover on the points to view the concentration of the pollutant and click on the colored squares to show/hide a pollutant."></i>
+                  <!-- </a> -->
+                  <!-- END OF: Info Button -->
+                </div>
+                <!-- -----------------------MainChart Card Body----------------------- -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="mainChartJsCanvas"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- --------------------------------------ROW #5[Donut Chart Row]-------------------------------------- -->
+
+
+
+
+
+          <div class="row">
+
+
+            <!--Historical Data chart-->
+            <div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4" data-intro="This graph shows the <b>average historical pollutant data for the whole day</b>.
+              <br><br>
+              Remember, you can hover on each point to view the data in more detail." data-scrollTo="tooltip">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Average Historical Pollutant Data by Date</h6>
+				<!-- ------Info button------ -->
+                  <!-- <a href="#/"> -->
+                  <i class="fas fa-info-circle james-cursor"
+                    aria-label="Information for: Average Historical Pollutant Data by Date" data-toggle="tooltip"
+                    title="This graph shows the average pollutant concentration for the date while accounting for the outliers. You can hover on the points to view the concentration of the pollutant and click on the colored squares to show/hide a pollutant."></i>
+                  <!-- </a> -->
+                  <!-- END OF: Info Button -->
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="historyChartJsCanvas"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <div class="row">
+            <!-- DataTables Card -->
+            <div class="card shadow mb-4 col-xl-12 col-lg-12" data-intro="Wonder whats going on behind the scenes?
+            <br><br>
+            This is the <b>table of data uploaded directly from the hardware</b>." data-scrollTo="tooltip">
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Raw Data from Sensors </h6>
+				<!-- ------Info button------ -->
+                  <!-- <a href="#/"> -->
+                  <i class="fas fa-info-circle james-cursor"
+                    aria-label="Information for: Raw Data from Sensors" data-toggle="tooltip"
+                    title="This table shows you the raw data recorded from the sensor. In this table you can show up to 100 entries, search, sort by headers and go to the next page of the table."></i>
+                  <!-- </a> -->
+                  <!-- END OF: Info Button -->
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTableSensors" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Debug Counter</th>
+                        <th>H2 ppm</th>
+                        <th>Smoke ppm</th>
+                        <th>LPG ppm</th>
+                        <th>CO2 ppm</th>
+                        <th>CO ppm</th>
+                        <th>Alcohol ppm</th>
+                        <th>Temperature °C</th>
+                        <th>Humidity %</th>
+                        <th>Dust Density µg/m3</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Date</th>
+                        <th>Debug Counter</th>
+                        <th>H2 ppm</th>
+                        <th>Smoke ppm</th>
+                        <th>LPG ppm</th>
+                        <th>CO2 ppm</th>
+                        <th>CO ppm</th>
+                        <th>Alcohol ppm</th>
+                        <th>Temperature °C</th>
+                        <th>Humidity %</th>
+                        <th>Dust Density ug/m3</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Aerate 2020</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+
+      </div>
+      <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you ready?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">If you are logged in, select the button below if you are ready to end your current session. If you are not logged in, the button will send you to the log in page..</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" type="button" data-dismiss="modal" id="logoutButton">Logout/Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!------------------------------------------MANDATORY SCRIPTS------------------------------------------->
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Jquery Easing-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Demo Charts -->
+    <!-- <script src="js/demo/chart-area-demo.js"></script> -->
+    <!-- <script src="aerate-charts/chart-james-text.js"></script> -->
+
+
+
+    <!-- ------------------------------------------James scripts for all pages-------------------------------------------->
+    <!--JQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- JQueryUI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+      integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <!--Autocomplete-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.10/jquery.autocomplete.min.js"
+      integrity="sha256-xv9tRiSlyBQMvBkQeqNyojOQf45uTVXQAtIMrmgqV18=" crossorigin="anonymous"></script>
+    <!--DataTables-->
+    <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
+    <link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/datatables.min.js"></script>
+
+    <!-- ----------------------------------*********************James Scripts****************----------------------------------- -->
+
+    <!-- James Aerate Charts -->
+    <!-- <script src="aerate-charts/chart-humidex.js"></script> -->
+    <!-- <script src="aerate-charts/chart-mainChartJSChart.js"></script> -->
+
+    <script>
+      //--------------------------------------------------Add Listeners to Buttons--------------------------------------------------//
+      document.getElementById("logoutButton").addEventListener("click", function () {
+        handleLogout()
+      });
+      document.getElementById("generateReportButton").addEventListener("click", function () {
+        iziToast.warning({ message: "Reloading Page" });
+        location.reload()
+        // location.reload(true)
+        console.log("Reloading Page")
+      });
+      // document.getElementById("refreshCalendarButton").addEventListener("click", function () {
+      //   refreshAllCharts();
+      //   console.log("refreshed calendar")
+      // });
+
+      document.getElementById("helpButton").addEventListener("click", function () {
+        introJs().start();
+      });
+
+      //------------------------------------*******Setup Charts/Graphs*******------------------------------------//
+      // ----------++++++++++++++++++++++*******Overview Graphs*******++++++++++++++++++++++-------//
+      //------Humidex Gage------//
+      var humidexGage = new JustGage({ //setup humidex gage
+        id: "humidexGauge",
+        // valueFontFamily: "Helvetica",
+        value: 22,
+        min: 22,//min humidex value
+        minTxt: "22°C",
+        max: 82,//max humidex value
+        maxTxt: "82°C",
+        title: "Humidex",
+        label: "feels like",
+        textRenderer: (v) => {
+          return v + "°C" //add degerees logo
+        },
+        levelColors: ["#1cc88a", "#f6c23e", "#e74a3b"],//bootstrap colors
+        relativeGaugeSize: true
+      });
+
+      //-
+      //+++
+
+      //Get CO Value//#part2 Used for refreshing the chart text ONLY
+
+
+
+
+      //------DataTables Sensors------//
+      var dataTableSensors = $('#dataTableSensors').DataTable({
+        responsive: true
+      });
+
+
+
+
+
+
+
+
+      //------------------------------------*******Set Data for ChartJS*******------------------------------------////
+      //Create the Dataset Object From the Array and define the labels and colors
+      var dataSet_ARDUINO_DATE = createChartDataset("Date", aerUnited.getARDUINO_DATE(), 'rgba(255, 99, 132, 1)', 'rgba(255, 99, 132, 0.2)');
+      var dataSet_ARDUINO_counter = createChartDataset("Arduino Counter", aerUnited.getARDUINO_counter(), 'rgba(153, 152, 151, 1)', 'rgba(235, 233, 231, 1)');
+      var dataSet_MQ8_h2_ppm = createHiddenChartDataset("h2 ppm", aerUnited.getMQ8_h2_ppm(), 'rgba(9, 243, 255, 1)', 'rgba(204, 255, 247, 0.4)');//"h2 ppm"]
+      var dataSet_MQ2_smk_ppm = createHiddenChartDataset("smoke ppm", aerUnited.getMQ2_smk_ppm(), 'rgba(153, 152, 151, 1)', 'rgba(235, 235, 235, 0.4)');//"smoke ppm"]
+      var dataSet_MQ6_lpg_ppm = createHiddenChartDataset("lpg ppm", aerUnited.getMQ6_lpg_ppm(), 'rgba(163, 140, 235, 1)', 'rgba(232, 224, 255, 0.4)');//"lpg ppm"]
+      var dataSet_MQ135_co2_ppm = createHiddenChartDataset("c02 ppm", aerUnited.getMQ135_co2_ppm(), 'rgba(78, 212, 75, 1)', 'rgba(208, 255, 207, 0.4)');//"c02 ppm"]
+      var dataSet_MQ7_co_ppm = createHiddenChartDataset("co ppm", aerUnited.getMQ7_co_ppm(), 'rgba(217, 206, 27, 1)', 'rgba(255, 251, 189, 0.4)');//"co ppm"]
+      var dataSet_MQ3_alc_mgL = createHiddenChartDataset("alcohol mg/L", aerUnited.getMQ3_alc_mgL(), 'rgba(219, 120, 14, 1)', 'rgba(255, 221, 184, 0.4)');//"alcohol mg/L"]
+      var dataSet_DHT_temp_c = createChartDataset("temperature C", aerUnited.getDHT_temp_c(), 'rgba(252, 90, 79, 1)', 'rgba(255, 205, 201, 0.4)');//"temperature C"]
+      var dataSet_DHT_hum = createChartDataset("Humidity %", aerUnited.getDHT_hum(), 'rgba(0, 174, 214, 1)', 'rgba(179, 241, 255, 0.4)');//"Humidity %"]
+      var dataSet_SHARP_dust_ugm3 = createHiddenChartDataset("dust density ug/m3", aerUnited.getSHARP_dust_ugm3(), 'rgba(171, 150, 91, 1)', 'rgba(222, 214, 191, 0.4)');//"dust density ug/m3"]
+      //END OF: Set Data for ChartJS---//
+
+      //-----------NOTE: Some Charts are moved to external JS files so that it will render even without internet connection----------//
+      //-------Area Chart------//
+      // Set new default font family and font color to mimic Bootstrap's default styling
+      //// Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+      //// Chart.defaults.global.defaultFontColor = '#858796';
+      var mainChartJSChart = new Chart(document.getElementById("mainChartJsCanvas"), {
+        type: 'line',
+        data: {
+          labels://THIS IS AN ARRAY, NOT A DATASET
+            aerUnited.getARDUINO_DATE(),//Name for the dataset (label underneath the each data in the chart)datasets:
+          datasets: [
+            dataSet_MQ8_h2_ppm,
+            dataSet_MQ2_smk_ppm,
+            dataSet_MQ6_lpg_ppm,
+            dataSet_MQ135_co2_ppm,
+            dataSet_MQ7_co_ppm,
+            dataSet_MQ3_alc_mgL,
+            dataSet_DHT_temp_c,
+            dataSet_DHT_hum,
+            dataSet_SHARP_dust_ugm3
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          // title: {
+          //   display: true,
+          //   text: 'mainChartJSChart'
+          // },
+          layout: {
+            padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0
+            }
+          },
+          scales: {
+            xAxes: [{
+              time: {
+                unit: 'date'
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false
+              },
+              ticks: {
+                maxTicksLimit: 7
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Date'
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                padding: 10,
+              },
+              gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2]
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Sensor Value'
+              }
+            }],
+          },
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            titleMarginBottom: 3,
+            titleFontColor: '#6e707e',
+            titleFontSize: 12,
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            intersect: false,
+            mode: 'index'
+          }
+        }
+      });
+      //------------------------------------*******Set Data for History Chart*******------------------------------------////
+      //Create the Dataset Object From the Array and define the labels and colors
+      var isFirstTime = true
+      var historicalData; //object that will store all historical data truncated means
+      var chartData_history_Date = []
+      var chartData_history_MQ8_h2_ppm = []
+      var chartData_history_MQ2_smk_ppm = []
+      var chartData_history_MQ6_lpg_ppm = []
+      var chartData_history_MQ135_co2_ppm = []
+      var chartData_history_MQ7_co_ppm = []
+      var chartData_history_MQ3_alc_mgL = []
+      var chartData_history_DHT_temp_c = []
+      var chartData_history_DHT_hum = []
+      var chartData_history_SHARP_dust_ugm3 = []
+      // var dataSet_history_Date = createChartDataset("Date", chartData_history_ARDUINO_DATE, 'rgba(255, 99, 132, 1)', 'rgba(255, 99, 132, 0.2)');
+      var dataSet_history_MQ8_h2_ppm = createHiddenChartDataset("h2 ppm", chartData_history_MQ8_h2_ppm, 'rgba(9, 243, 255, 1)', 'rgba(204, 255, 247, 0.4)');//"h2 ppm"]
+      var dataSet_history_MQ2_smk_ppm = createHiddenChartDataset("smoke ppm", chartData_history_MQ2_smk_ppm, 'rgba(153, 152, 151, 1)', 'rgba(235, 235, 235, 0.4)');//"smoke ppm"]
+      var dataSet_history_MQ6_lpg_ppm = createHiddenChartDataset("lpg ppm", chartData_history_MQ6_lpg_ppm, 'rgba(163, 140, 235, 1)', 'rgba(232, 224, 255, 0.4)');//"lpg ppm"]
+      var dataSet_history_MQ135_co2_ppm = createHiddenChartDataset("c02 ppm", chartData_history_MQ135_co2_ppm, 'rgba(78, 212, 75, 1)', 'rgba(208, 255, 207, 0.4)');//"c02 ppm"]
+      var dataSet_history_MQ7_co_ppm = createHiddenChartDataset("co ppm", chartData_history_MQ7_co_ppm, 'rgba(217, 206, 27, 1)', 'rgba(255, 251, 189, 0.4)');//"co ppm"]
+      var dataSet_history_MQ3_alc_mgL = createHiddenChartDataset("alcohol mg/L", chartData_history_MQ3_alc_mgL, 'rgba(219, 120, 14, 1)', 'rgba(255, 221, 184, 0.4)');//"alcohol mg/L"]
+      var dataSet_history_DHT_temp_c = createChartDataset("temperature C", chartData_history_DHT_temp_c, 'rgba(252, 90, 79, 1)', 'rgba(255, 205, 201, 0.4)');//"temperature C"]
+      var dataSet_history_DHT_hum = createChartDataset("Humidity %", chartData_history_DHT_hum, 'rgba(0, 174, 214, 1)', 'rgba(179, 241, 255, 0.4)');//"Humidity %"]
+      var dataSet_history_SHARP_dust_ugm3 = createHiddenChartDataset("dust density ug/m3", chartData_history_SHARP_dust_ugm3, 'rgba(171, 150, 91, 1)', 'rgba(222, 214, 191, 0.4)');//"dust density ug/m3"]
+      //END OF: Set Data for ChartJS---//
+      var historyChartJSChart = new Chart(document.getElementById('historyChartJsCanvas'), {
+        type: 'line',
+        data: {
+          labels://THIS IS AN ARRAY, NOT A DATASET
+            chartData_history_Date,//Name for the dataset (label underneath the each data in the chart)datasets:
+          datasets: [ // dataSet_ARDUINO_DATE, //Date moved to chart label
+            // dataSet_ARDUINO_counter, Disabled from chart
+            dataSet_history_MQ8_h2_ppm, dataSet_history_MQ2_smk_ppm, dataSet_history_MQ6_lpg_ppm,
+            dataSet_history_MQ135_co2_ppm, dataSet_history_MQ7_co_ppm, dataSet_history_MQ3_alc_mgL,
+            dataSet_history_DHT_temp_c, dataSet_history_DHT_hum, dataSet_history_SHARP_dust_ugm3
+          ],
+        },
+        //Chart Options
+        options: {
+          maintainAspectRatio: false,
+          // title: {
+          //   display: true,
+          //   text: 'mainChartJSChart'
+          // },
+          layout: {
+            padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0
+            }
+          },
+          scales: {
+            xAxes: [{
+              time: {
+                unit: 'date'
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false
+              },
+              ticks: {
+                maxTicksLimit: 7
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Date/Time'
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                padding: 10,
+              },
+              gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2]
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Sensor Value'
+              }
+            }],
+          },
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            titleMarginBottom: 3,
+            titleFontColor: '#6e707e',
+            titleFontSize: 12,
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            intersect: false,
+            mode: 'index'
+          }
+        }
+        // options: {
+        //   title: {
+        //     display: true,
+        //     text: 'historyChartJSChart'
+        //   },
+        //   scales: {
+        //     xAxes: [{
+        //       scaleLabel: {
+        //         display: true,
+        //         labelString: 'Date/Time'
+        //       }
+        //     }],
+        //     yAxes: [{
+        //       scaleLabel: {
+        //         display: true,
+        //         labelString: 'Sensor Value'
+        //       },
+        //       ticks: {
+        //         beginAtZero: true
+        //       }
+        //     }]
+        //   }, tooltips: {
+        //     mode: 'index',
+        //     intersect: false,
+        //   },
+
+        // }
+      });
+      //--
+      //*******************************************************//
+
+      let alertsCenterCounter = 0;
+      var searchBoxSuggestions = [
+        { value: 'All Sensors', data: 'index.html"' },
+        { value: 'Dust (PM2.5)', data: 'sensor-dust.html"' },
+        { value: 'Carbon Dioxide (CO2)', data: 'sensor-co2.html"' },
+        { value: 'Carbon Monoxide (CO)', data: 'sensor-co.html"' },
+        { value: 'Temperature and Humidity', data: 'sensor-temp-hum.html"' },
+        { value: 'Hydrogen (H2)', data: 'sensor-h2.html"' },
+        { value: 'Smoke', data: 'sensor-smk.html"' },
+        { value: 'LPG', data: 'sensor-lpg.html"' },
+        { value: 'Alcohol', data: 'sensor-alc.html"' },
+      ];
+
+
+
+
+
+      
+
+
+      //--//
+      //--LogOut--//
+ 
+
+      //-----------------------------------***********JQUERY*********-----------------------------------//
+      $(function () {
+        //------------Autocomplete Searchbox------------//
+        $('#inputSearch').autocomplete({
+          lookup: searchBoxSuggestions,
+          onSelect: function (suggestion) {
+            console.log('[Searchbox-autocomplete] selected: ' + suggestion.value + ', ' + suggestion.data);
+            window.location.href = suggestion.data;
+          }
+        });
+        //------------DatePicker Settings------------//
+        $("#inputTargetDate").datepicker({
+          dateFormat: 'D MM dd yy', //modified datepicker format with "Wed, 6 May 2020"
+          //dateFormat original for the database: 'yy-mm-dd',
+          minDate: new Date(2020, 3 - 1, 3),
+          maxDate: new Date()//Set max date as today's date
+        }).datepicker("setDate", new Date())
+          .on("change", function () {
+            // var datePickerDateParsed = $(this).datepicker( 'getDate' ).toISOString().slice(0,10); //get datepicker date in yy-mm-dd
+            // getDatePickerParsedDate();
+            refreshAllCharts();
+            console.log("onChange Datepicker executed refreshedAllCharts()")
+          })
+          ; //use current date as picker custom date
+        // .datepicker({ minDate: -20, maxDate: "+1M +10D" })
+
+        //Set refreshCalendarButton to show/hide datepicker automatically
+        $("#refreshCalendarButton").click(function () {
+          // $("#inputTargetDate").datepicker("show");
+          if ($(inputTargetDate).datepicker("widget").is(":visible")) {
+            $(inputTargetDate).datepicker("hide");
+          } else {
+            $(inputTargetDate).datepicker("show");
+          }
+        });
+        //Change form button redirection to do function
+        $('#inputTargetDateForm').on('submit', function () {
+          refreshAllCharts();//Do function
+          return false;//disable redirect
+        })
+        //------------Datatables Settings------------//
+        $(document).ready(function () {
+          $('#dataTableSensors').DataTable();
+        });
+
+
+        $('[data-toggle="tooltip"]').tooltip() //Enable Popper tooltips anywhere on bootstrap
+
+
+
+      });
+      //----//
+
+
+
+      function changeDateAndRefreshHumidexChart(humidexchartName) {//TODO: Edit This on every page used
+        try {
+          let humidexValue = calculateHumidex(aerUnited.getLatestDHT_temp_c(), aerUnited.getLatestDHT_hum())
+          humidexGage.refresh(humidexValue)
+
+          let explainer = ""
+          if (humidexValue > 0 && humidexValue < 30) {
+            explainer = "No discomfort";
+          }
+          if (humidexValue >= 30 && humidexValue < 40) {
+            explainer = "Some discomfort";
+          }
+          if (humidexValue >= 40 && humidexValue < 45) {
+            explainer = "Great discomfort; avoid exertion";
+          }
+          if (humidexValue >= 45) {
+            explainer = "Dangerous; heat stroke possible";
+          }
+          console.log("--REEEEEEE----" + document.getElementById("humidexExplainer").innerHTML)
+          document.getElementById("humidexExplainer").innerHTML = explainer
+
+        } catch (err) {
+          console.log("ketemu masalah")
+          console.warn(err)
+        }
+
+
+      }
+      // function changeDateAndRefreshChart(chartName) {//TODO: Edit This on every page used
+      //   alert("[changeDateAndRefreshChart(chartName)] IF YOU SEE THIS: Please make a new function for each chart to be able to refresh EACH CHART and refresh the datasets the chart uses | follow the tutorial in the comments -James")
+      //   console.error("[changeDateAndRefreshChart(chartName)] IF YOU SEE THIS: Please make a new function for each chart to be able to refresh EACH CHART and refresh the datasets the chart uses | follow the tutorial in the comments -James")
+      //   //You have to build the function yourself for every chart because
+      //   //each chart has different dataset data and different indexes for the dataset
+      //   //So use this function as a guide to help you build your own.
+
+      //   //-----Clear Datasets from aerUnified class (must)-----//
+      //   // clearAllChartDataArrays();//Clear data arrays
+      //   // pushDataFromDateToChartArray(); //Get new data for the date and put it in the data array
+
+      //   //-----Change Label (must)-----//
+      //   // replaceChartDatasetLabel(chartName, aerUnited.getARDUINO_DATE()) //replace the labels with desired label array (string array)
+
+      //   //-----Pick the data-----//
+      //   //Dont forget to change the indexes according to the chart
+      //   // replaceChartDatasetData(chartName, 0, aerUnited.getMQ8_h2_ppm());
+      //   // replaceChartDatasetData(chartName, 1, aerUnited.getMQ2_smk_ppm());
+      //   // replaceChartDatasetData(chartName, 2, aerUnited.getMQ6_lpg_ppm());
+      //   // replaceChartDatasetData(chartName, 3, aerUnited.getMQ135_co2_ppm());
+      //   // replaceChartDatasetData(chartName, 4, aerUnited.getMQ7_co_ppm());
+      //   // replaceChartDatasetData(chartName, 5, aerUnited.getMQ3_alc_mgL());
+      //   // replaceChartDatasetData(chartName, 6, aerUnited.getDHT_temp_c());
+      //   // replaceChartDatasetData(chartName, 7, aerUnited.getDHT_hum());
+      //   // replaceChartDatasetData(chartName, 8, aerUnited.getSHARP_dust_ugm3());
+      // }
+
+
+
+
+
+
+      //-----------------------------------Abstract Functions Overriding (Copy Paste to every Page)-----------------------------------//
+
+
+      //END OF: Abstract Functions Overriding (Copy Paste to every Page)--//
+    </script>
+
+    <script src="unified-pages-sensors.js"></script>
+
+    <script>
+      //------------Runtime------------//
+
+
+      addAlertInAlertsCenter("Welcome to aerate! Your notifications will show up here")
+
+      //--Hide Table Contents For Specific Sensors--//
+      // dataTableSensors.column(0).visible(false);//Date</th>
+      dataTableSensors.column(1).visible(false);//Debug Counter</th>
+      dataTableSensors.column(2).visible(false);//H2 ppm</th>
+      dataTableSensors.column(3).visible(false);//Smoke ppm</th>
+      dataTableSensors.column(4).visible(false);//LPG ppm</th>
+      dataTableSensors.column(5).visible(false);//CO2 ppm</th>
+      dataTableSensors.column(6).visible(false); //CO ppm</th>
+      dataTableSensors.column(7).visible(false); //Alcohol ppm</th>
+      // dataTableSensors.column(8).visible(false);//Temperature °C</th>
+      // dataTableSensors.column(9).visible(false);//Humidity %</th>
+      dataTableSensors.column(10).visible(false);//Dust Density µg/m3</th>
+
+      console.log("----Finished Loading Page-----")
+    </script>
+</body>
+
+</html>

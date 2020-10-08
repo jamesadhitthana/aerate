@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Aerate Tester!</title>
+    <!--Initialize Firebase API-->
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script>
+        //--------------------------------------------------Initialize Firebase--------------------------------------------------//
+        var config = {
+            apiKey: "TODO: CHANGE ME",
+            authDomain: "TODO: CHANGE ME",
+            databaseURL: "TODO: CHANGE ME",
+            projectId: "TODO: CHANGE ME",
+            storageBucket: "TODO: CHANGE ME",
+            messagingSenderId: "TODO: CHANGE ME",
+            appId: "TODO: CHANGE ME",
+            measurementId: "TODO: CHANGE ME"
+        };
+
+        firebase.initializeApp(config);
+        firebase.analytics();
+        //-END OF: Initialize Firebase-//
+
+
+        function hello() {
+            alert("Hello")
+        }
+        function toggleDarkMode() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
+    <style>
+        body {
+            padding: 25px;
+            background-color: black;
+            color: white;
+            font-size: 25px;
+        }
+
+        .dark-mode {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Database Dynamic Chart Tester </h1>
+    inputKu:<input type="text" id="inputKu" value="hello">
+    <button id="testButton1">writeTestData with inputKu</button>
+
+    <p>2020-03-04 Tester </p>
+    <button id="testButton2" >Add 2020-03-04T00:10:07</button>
+    <button id="testButton3" disabled="true">Delete 2020-03-04T00:10:07</button>
+    <br>
+    <button id="testButton4">Add 2020-03-04T00:10:11</button>
+    <button id="testButton5">Delete 2020-03-04T00:10:11</button>
+
+    <p>2020-03-03 Tester </p>
+    <button id="testButton6" >Add 2020-03-03T23:59:50</button>
+    <button id="testButton7" disabled="true">Delete 2020-03-03T23:59:50</button>
+    <br>
+    <button id="testButton8">Add 2020-03-03T23:59:58</button>
+    <button id="testButton9">Delete 2020-03-03T23:59:58</button>
+    <p>Psst.. dont forget to open the secret compartment</p>
+
+    <script>
+        //---------------Firebase Realtime Database---------------//
+        function writeTestData(date, chosenKey, chosenVal) {
+            firebase.database().ref('arduino/raw/' + date + "/" + chosenKey).set(chosenVal);
+            console.log("writeTestData(..)!")
+        }
+        function removeTestData(date, chosenKey) {
+            firebase.database().ref('arduino/raw/' + date + "/" + chosenKey).remove();
+            console.log("writeTestData(..)!")
+        }
+
+
+
+        //----------------------Add Listeners to Buttons----------------------//
+        //------------testButton1------------//
+        document.getElementById("testButton1").addEventListener("click", function () {
+            // alert("testButton1")
+            writeTestData("cobaTester", "inputKu", document.getElementById("inputKu").value)
+            //writeTestData("cobaTester", "kataKunci", "dataNya1")
+            console.log("testButton1!")
+        });
+        //------------testButton2------------//
+        document.getElementById("testButton2").addEventListener("click", function () {
+            writeTestData("2020-03-04", "2020-03-04T00:10:07", "2020-03-04T00:10:07,106,18,6,0.00,135,1.35,0.21,26,65,1.31,true")
+            console.log("testButton2")
+            document.getElementById("testButton4").disabled = false;
+            document.getElementById("testButton5").disabled = false;
+        });
+        //------------testButton3------------//
+        document.getElementById("testButton3").addEventListener("click", function () {
+            removeTestData("2020-03-04", "2020-03-04T00:10:07")
+            console.log("testButton3")
+            document.getElementById("testButton4").disabled = true;
+            document.getElementById("testButton5").disabled = false;
+        });
+        //------------testButton4------------//
+        document.getElementById("testButton4").addEventListener("click", function () {
+            writeTestData("2020-03-04", "2020-03-04T00:10:11", "2020-03-04T00:10:11,107,19,6,0.00,135,1.29,0.21,26,65,2.37,true")
+            console.log("testButton4")
+            document.getElementById("testButton2").disabled = true;
+            document.getElementById("testButton3").disabled = true;
+        });
+        //------------testButton5------------//
+        document.getElementById("testButton5").addEventListener("click", function () {
+            removeTestData("2020-03-04", "2020-03-04T00:10:11")
+            console.log("testButton5")
+            document.getElementById("testButton2").disabled = false;
+            document.getElementById("testButton3").disabled = false;
+            document.getElementById("testButton4").disabled = true;
+        });
+
+
+        //------------testButton6------------//
+        document.getElementById("testButton6").addEventListener("click", function () {
+            writeTestData("2020-03-03", "2020-03-03T23:59:50", "2020-03-03T23:59:50,133,18,7,0.00,135,1.32,0.21,26,62,1.87,true")
+            console.log("testButton6")
+            document.getElementById("testButton8").disabled = false;
+            document.getElementById("testButton9").disabled = false;
+        });
+        //------------testButton7------------//
+        document.getElementById("testButton7").addEventListener("click", function () {
+            removeTestData("2020-03-03", "2020-03-03T23:59:50")
+            console.log("testButton7")
+            document.getElementById("testButton8").disabled = true;
+            document.getElementById("testButton9").disabled = false;
+        });
+        //------------testButton8------------//
+        document.getElementById("testButton8").addEventListener("click", function () {
+            writeTestData("2020-03-03", "2020-03-03T23:59:58", "2020-03-03T23:59:58,135,18,7,0.00,135,1.32,0.21,26,62,3.29,true")
+            console.log("testButton8")
+            document.getElementById("testButton6").disabled = true;
+            document.getElementById("testButton7").disabled = true;
+        });
+        //------------testButton9------------//
+        document.getElementById("testButton9").addEventListener("click", function () {
+            removeTestData("2020-03-03", "2020-03-03T23:59:58")
+            console.log("testButton9")
+            document.getElementById("testButton6").disabled = false;
+            document.getElementById("testButton7").disabled = false;
+            document.getElementById("testButton8").disabled = true;
+        });
+
+
+
+
+
+
+    </script>
+</body>
+
+
+
+</html>
