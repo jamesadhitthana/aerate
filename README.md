@@ -1,7 +1,8 @@
-<h1 align="center">aerate</h1>
-<p align="center">
-<sup><b>A cloud-based IoT and Web Application for indoor air quality monitoring using Arduino </b></sup>
-</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerate-a-only-logo.png?token=AINQE252Z5HX6QFZJNXDNQK7RA7OE" alt="Ducktionary Icon" width="100" height="100">
+<h1 >aerate</h1>
+<p ><sup><b>A cloud-based IoT and Web Application for indoor air quality monitoring using Arduino </b></sup></p>
+</div>
 
 ![screenshot-aerate-intro](afafa)
 
@@ -9,11 +10,11 @@
 
 TODO: Me
 
-![aerate-big-picture](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/sss)
+![aerate-big-picture](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/big%20picture%20-%20aerate%20james%20adhitthana.PNG?token=AINQE27SD77XLLRNLTDN3E27RA6HO)
 
 ### Features:
 
-![aerate-poster1](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster.jpg?token=AINQE27MCKV4X7TENZ7PV2S7RA362)
+![aerate-poster](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster.jpg?token=AINQE27MCKV4X7TENZ7PV2S7RA362)
 
 ## Hardware: Arduino
 
@@ -40,6 +41,7 @@ TODO: Me
 - aerate was built for my university dissertation and therefore we will not be liable for any loss or damage of any nature.
 
 ## Built With
+
 - [Arduino](https://www.arduino.cc/) - Arduino
 - [Firebase](https://firebase.google.com/) - Firebase
 - [JavaScript](https://www.javascript.com/) - JavaScript
@@ -51,4 +53,4 @@ TODO: Me
 - **Hareva, David Habsara** (Thesis advisor)
 - **Murwantara, I Made** (Thesis advisor)
 
-![screenshot-aerate-end](a)
+![screenshot-aerate-end](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerate-logo-top.png?token=AINQE24KXG7NT7GTSP6AQJK7RA7FW)
