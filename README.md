@@ -18,7 +18,8 @@ TODO: Me
 
 ## Hardware: Arduino
 
-TODO: Me
+![aerate-hardware-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster.jpg?token=AINQE27MCKV4X7TENZ7PV2S7RA362)
+
 
 ## Software: Aerate Web App Dashboard
 
