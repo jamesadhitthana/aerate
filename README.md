@@ -4,7 +4,7 @@
 <p ><sup><b>A cloud-based IoT and Web Application for indoor air quality monitoring using Arduino </b></sup></p>
 </div>
 
-![screenshot-aerate-intro](afafa)
+![aerate-poster-cropped](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster%20-%20cropped.jpg?token=AINQE23PEVUTNR56DMQ7HBC7RCDJ2)
 
 # Introduction
 
@@ -14,12 +14,11 @@ TODO: Me
 
 ### Features:
 
-![aerate-poster-cropped](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/James%20Adhitthana%20-%20aerate%20Poster%20-%20cropped.jpg?token=AINQE23PEVUTNR56DMQ7HBC7RCDJ2)
+TODO: Me
 
 ## Hardware: Arduino
 
 ![aerate-hardware-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/hardware%20aerate%20james%20adhitthana.PNG?token=AINQE25IGVJUBHVKCWLEFX27RCCYG)
-
 
 ## Software: Aerate Web App Dashboard
 
