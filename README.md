@@ -67,7 +67,7 @@ Chemicals in experimentations involved may displace oxygen in a room and cause d
 
 # Software: Aerate Web App Dashboard
 
-![aerate-software-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%20james%20adhitthana.PNG?token=AINQE25IGVJUBHVKCWLEFX27RCCYG)
+![aerate-software-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%20james%20adhitthana.png?token=AINQE272IQWZF3THTK6POE27RFGMG)
 
 # Getting Started
 
