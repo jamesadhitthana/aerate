@@ -13,8 +13,9 @@ Did you know the air quality indoors matters as much as the quality of air outdo
 ## Introducing aerate
 
 Aerate is a user-friendly cloud-based web application and hardware device that visualizes and informs you of the air quality in your room caused by exposure to dust particles, gasses, chemicals, and more! The application allows monitoring of your room while visualizing it in colorful, user-friendly graphics and even provides tips on increasing air quality! The app also acts as an alarm if a pollutant in your room passes a dangerous threshold.
+Working using cloud technology, the app works on all your devices and can be used even when you are not at home, keeping your family safe from dangerous air. 
 
-Working using cloud technology, the app works on all your devices and can be used even when you are not at home, keeping your family safe from dangerous air. Here is the big picture of aerate:
+#### Here is the big picture of aerate:
 
 ![aerate-big-picture](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/big%20picture%20-%20aerate%20james%20adhitthana.PNG?token=AINQE27SD77XLLRNLTDN3E27RA6HO)
 
@@ -60,11 +61,11 @@ Constant exposure to smoke is correlated to heart and lung disease. Aerate can d
 
 Chemicals in experimentations involved may displace oxygen in a room and cause difficulty breathing and gas poisoning. Aerate comes with an alcohol and hydrogen (H2) sensor to detect dangerous levels of these used experimentation materials/byproducts.
 
-## Hardware: Arduino
+# Hardware: Arduino
 
 ![aerate-hardware-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/hardware%20aerate%20james%20adhitthana.PNG?token=AINQE25IGVJUBHVKCWLEFX27RCCYG)
 
-## Software: Aerate Web App Dashboard
+# Software: Aerate Web App Dashboard
 
 TODO: Me
 
