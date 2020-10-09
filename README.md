@@ -136,10 +136,40 @@ On the other hand, the software component is a web app. It is responsible for re
 
 ## Built With
 
+### Hardware
+
+- [Wire](#) - Wire
+- [LiquidCrystal_I2C](#) - LiquidCrystal_I2C
+- [RTClib.js](#) - RTClib
+- [DHT SensorLibrary](#) - DHT Sensor Library
+- [MQSensorsLib](#) - MQSensorsLib
+- [Sharp Dust Sensor Library ](#) - Sharp Dust Sensor Library
+- [FirebaseESP8266](#) - FirebaseESP8266
+- [ESP8266WiFi](#) - ESP8266WiFi
+- [DNSServer](#) - DNSServer
+- [ESP8266WebServer](#) - ESP8266WebServer
+- [WiFiManager](#) - WiFiManager
+
+### Web App
+
 - [Arduino](https://www.arduino.cc/) - Arduino
 - [Firebase](https://firebase.google.com/) - Firebase
 - [JavaScript](https://www.javascript.com/) - JavaScript
 - [Bootstrap](https://getbootstrap.com/) - Bootstrap
+- [JQuery](#) - JQuery + JQueryUI
+- [IziToast](#) - IziToast
+- [Raphael.js](#) - Raphael.js
+- [Chart.js](#) - Chart.js
+- [Progressbar.js ](#) - Progressbar.js
+- [JustGage](#) - JustGage
+- [DataTables ](#) - DataTables
+- [PapaParse](#) - PapaParse
+- [outliers](#) - outliers
+- [Push.js](#) - Push.js
+- [UpUp](#) - UpUp
+- [Intro.js](#) - Intro.js
+- [js-cookie ](#) - js-cookie
+- [Moment.js](#) - Moment.js
 
 ## Authors
 
