@@ -82,7 +82,7 @@ The hardware consists of an Arduino and its IoT modules, essentially small elect
 
 ![aerate-hardware-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/hardware%20aerate%20james%20adhitthana.PNG?token=AINQE25IGVJUBHVKCWLEFX27RCCYG)
 
-# Software: Aerate Web App Dashboard
+# Software: aerate Web App Dashboard
 
 On the other hand, the software component is a web app. It is responsible for receiving data on the database, processing it with multiple calculations, and then visualizing it to inform the user of the US Air Quality Index, air quality score, pollutant concentration, humidex, and other relevant information.
 
@@ -151,5 +151,9 @@ On the other hand, the software component is a web app. It is responsible for re
 
 <div align="center">
 <a href="https://aerate.web.app/"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerate-logo-top.png?token=AINQE24KXG7NT7GTSP6AQJK7RA7FW" alt="Ducktionary Icon" ></a>
+
+</div>
+<div align="center">
+<a href="https://aerate.web.app/"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerfasdf.png?token=AINQE24KXG7NT7GTSP6AQJK7RA7FW" alt="Ducktionary Icon" ></a>
 
 </div>
