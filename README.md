@@ -136,40 +136,40 @@ On the other hand, the software component is a web app. It is responsible for re
 
 ## Built With
 
-### Hardware
-
-- [Wire](#) - Wire
-- [LiquidCrystal_I2C](#) - LiquidCrystal_I2C
-- [RTClib.js](#) - RTClib
-- [DHT SensorLibrary](#) - DHT Sensor Library
-- [MQSensorsLib](#) - MQSensorsLib
-- [Sharp Dust Sensor Library ](#) - Sharp Dust Sensor Library
-- [FirebaseESP8266](#) - FirebaseESP8266
-- [ESP8266WiFi](#) - ESP8266WiFi
-- [DNSServer](#) - DNSServer
-- [ESP8266WebServer](#) - ESP8266WebServer
-- [WiFiManager](#) - WiFiManager
-
-### Web App
+#### Hardware
 
 - [Arduino](https://www.arduino.cc/) - Arduino
-- [Firebase](https://firebase.google.com/) - Firebase
+- [Wire](https://www.arduino.cc/en/Reference/Wire) - Wire
+- [LiquidCrystal_I2C](https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library) - LiquidCrystal_I2C
+- [RTClib](https://github.com/adafruit/RTClib) - RTClib
+- [DHT Sensor Library](https://github.com/adafruit/DHT-sensor-library) - DHT Sensor Library
+- [MQSensorsLib](https://github.com/miguel5612/MQSensorsLib) - MQSensorsLib
+- [Sharp Dust Sensor Library ](https://github.com/sharpsensoruser/sharp-sensor-demos) - Sharp Dust Sensor Library
+- [FirebaseESP8266](https://github.com/mobizt/Firebase-ESP8266) - FirebaseESP8266
+- [ESP8266WiFi](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html#) - ESP8266WiFi
+- [DNSServer](https://github.com/esp8266/Arduino/tree/master/libraries/DNSServer) - DNSServer
+- [ESP8266WebServer](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer) - ESP8266WebServer
+- [WiFiManager](https://github.com/tzapu/WiFiManager) - WiFiManager
+
+#### Web App
+
 - [JavaScript](https://www.javascript.com/) - JavaScript
+- [Firebase](https://firebase.google.com/) - Firebase
 - [Bootstrap](https://getbootstrap.com/) - Bootstrap
-- [JQuery](#) - JQuery + JQueryUI
-- [IziToast](#) - IziToast
-- [Raphael.js](#) - Raphael.js
-- [Chart.js](#) - Chart.js
-- [Progressbar.js ](#) - Progressbar.js
-- [JustGage](#) - JustGage
-- [DataTables ](#) - DataTables
-- [PapaParse](#) - PapaParse
-- [outliers](#) - outliers
-- [Push.js](#) - Push.js
-- [UpUp](#) - UpUp
-- [Intro.js](#) - Intro.js
-- [js-cookie ](#) - js-cookie
-- [Moment.js](#) - Moment.js
+- [JQuery](https://jquery.com/) - JQuery + JQueryUI
+- [IziToast](https://github.com/marcelodolza/iziToast) - IziToast
+- [Raphael.js](https://github.com/DmitryBaranovskiy/raphael) - Raphael.js
+- [Chart.js](https://github.com/chartjs/Chart.js) - Chart.js
+- [Progressbar.js ](https://github.com/kimmobrunfeldt/progressbar.js) - Progressbar.js
+- [JustGage](https://github.com/toorshia/justgage) - JustGage
+- [DataTables ](https://github.com/DataTables/DataTables) - DataTables
+- [PapaParse](https://github.com/mholt/PapaParse) - PapaParse
+- [outliers](https://github.com/matthewmueller/outliers) - outliers
+- [Push.js](https://github.com/Nickersoft/push.js) - Push.js
+- [UpUp](https://github.com/TalAter/UpUp) - UpUp
+- [Intro.js](https://github.com/usablica/intro.js/) - Intro.js
+- [js-cookie ](https://github.com/js-cookie/js-cookie) - js-cookie
+- [Moment.js](https://github.com/moment/moment) - Moment.js
 
 ## Authors
 
