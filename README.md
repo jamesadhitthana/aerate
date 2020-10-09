@@ -149,11 +149,10 @@ On the other hand, the software component is a web app. It is responsible for re
 
 <!-- ![screenshot-aerate-end](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerate-logo-top.png?token=AINQE24KXG7NT7GTSP6AQJK7RA7FW) -->
 
-<div align="center">
+<!-- <div align="center">
 <a href="https://aerate.web.app/"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerate-logo-top.png?token=AINQE24KXG7NT7GTSP6AQJK7RA7FW" alt="Ducktionary Icon" ></a>
-
-</div>
+</div> -->
 <div align="center">
-<a href="https://aerate.web.app/"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Source%20Code%20-%20Web%20App/aerfasdf.png?token=AINQE24KXG7NT7GTSP6AQJK7RA7FW" alt="Ducktionary Icon" ></a>
+<a href="https://aerate.web.app/"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/aerate%20end%20card.png?token=AINQE25G2TJ4ATHKBW55RTS7RFKVQ" alt="Ducktionary Icon" ></a>
 
 </div>
