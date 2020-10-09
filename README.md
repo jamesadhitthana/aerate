@@ -115,16 +115,17 @@ On the other hand, the software component is a web app. It is responsible for re
 
 # Demo
 
+Here is a recorded demo of the aerate in action: [https://youtu.be/\_0vNESb3Ww8](https://youtu.be/_0vNESb3Ww8)
+
 <div align="center">
-<a href="https://youtu.be/_0vNESb3Ww8"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%sssss%20adhitthana.png?token=AINQE272IQWZF3THTK6POE27RFGMG" alt="Click to view aerate's demo" ></a>
+<a href="https://youtu.be/_0vNESb3Ww8"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/aerate-sensor-closeup.jpg?token=AINQE27X7CH3NOK62B2N4RS7RFQSG" alt="Click to view aerate's demo" ></a>
 </div>
 
 # Getting Started
 
-### View Demo:
+### Interactive Web App Dashboard:
 
-- [https://aerate.web.app/](https://aerate.web.app/) - aerate Web Dashboard
-- [https://youtu.be/\_0vNESb3Ww8](https://youtu.be/_0vNESb3Ww8) - Recorded demo
+- [https://aerate.web.app/](https://aerate.web.app/)
 
 ### User Manual:
 
