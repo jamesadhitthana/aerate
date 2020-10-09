@@ -8,13 +8,21 @@
 
 # Introduction
 
-TODO: Me
+Did you know the air quality indoors matters as much as the quality of air outdoors? Bad indoor air quality has been linked to debilitating effects, most commonly, lung diseases, stroke, heart disease, and even lung cancer. Not only that, but bad indoor air quality may affect your ability to focus and work. The worst part is, most of these bad things floating around in your room are odorless and invisible to the naked eye.
+
+## Introducing aerate
+
+Aerate is a user-friendly cloud-based web application and hardware device that visualizes and informs you of the air quality in your room caused by exposure to dust particles, gasses, chemicals, and more! The application allows monitoring of your room while visualizing it in colorful, user-friendly graphics and even provides tips on increasing air quality! The app also acts as an alarm if a pollutant in your room passes a dangerous threshold.
+
+Working using cloud technology, the app works on all your devices and can be used even when you are not at home, keeping your family safe from dangerous air. Here is the big picture of aerate:
 
 ![aerate-big-picture](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/big%20picture%20-%20aerate%20james%20adhitthana.PNG?token=AINQE27SD77XLLRNLTDN3E27RA6HO)
 
 ### Features:
 
-TODO: Me
+#### Indoor Air Pollution
+
+Using simple overview icons, US AQI, and air quality scores, aerate allows you to monitor the pollutants in your room and provide improvement tips to increase the air quality in your room.
 
 ## Hardware: Arduino
 
