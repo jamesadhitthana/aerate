@@ -13,7 +13,7 @@ Did you know the air quality indoors matters as much as the quality of air outdo
 ## Introducing aerate
 
 Aerate is a user-friendly cloud-based web application and hardware device that visualizes and informs you of the air quality in your room caused by exposure to dust particles, gasses, chemicals, and more! The application allows monitoring of your room while visualizing it in colorful, user-friendly graphics and even provides tips on increasing air quality! The app also acts as an alarm if a pollutant in your room passes a dangerous threshold.
-Working using cloud technology, the app works on all your devices and can be used even when you are not at home, keeping your family safe from dangerous air. 
+Working using cloud technology, the app works on all your devices and can be used even when you are not at home, keeping your family safe from dangerous air.
 
 #### Here is the big picture of aerate:
 
@@ -63,9 +63,24 @@ Chemicals in experimentations involved may displace oxygen in a room and cause d
 
 # Hardware: Arduino
 
+The hardware consists of an Arduino and its IoT modules, essentially small electronic devices such as the sensors, LCD, Wi-Fi chip, and more components. It is responsible for monitoring all sensor data, displaying it on the LCD, and sending the monitored data through a Wi-Fi internet connection towards a firebase cloud database.
+
+| ID    | Planned Hardware Features                                                                                                    | Status | HC  |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------- | ------ | :-: |
+| REQH1 | Sensors specific to pollutant being monitored (to increase accuracy)                                                         | Pass   |     |
+| REQH2 | Plug & play automatic configuration and Wi-Fi connectivity                                                                   | Pass   |     |
+| REQH3 | LCD display to view real-time sensor readings                                                                                | Pass   |     |
+| REQH4 | Real time clock to keep track of date and time (timestamp)                                                                   | Pass   |     |
+| REQH5 | Hardware sends sensor readings on a set interval (ex: 30 seconds) to the cloud database through Wi-Fi internet connectivity. | Pass   |     |
+| REQH6 | Buzzer beeps (alarm sound) when a pollutant is detected over a safety threshold.                                             | Pass   |     |
+| REQH7 | LED flashes when a pollutant is detected over a safety threshold.                                                            | Pass   |     |
+| REQH8 | Push button to change settings.                                                                                              | Pass   |     |
+
 ![aerate-hardware-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/hardware%20aerate%20james%20adhitthana.PNG?token=AINQE25IGVJUBHVKCWLEFX27RCCYG)
 
 # Software: Aerate Web App Dashboard
+
+On the other hand, the software component is a web app. It is responsible for receiving data on the database, processing it with multiple calculations, and then visualizing it to inform the user of the US Air Quality Index, air quality score, pollutant concentration, humidex, and other relevant information.
 
 ![aerate-software-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%20james%20adhitthana.png?token=AINQE272IQWZF3THTK6POE27RFGMG)
 
