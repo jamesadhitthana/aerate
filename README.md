@@ -113,11 +113,18 @@ On the other hand, the software component is a web app. It is responsible for re
 
 ![aerate-software-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%20james%20adhitthana.png?token=AINQE272IQWZF3THTK6POE27RFGMG)
 
+# Demo
+
+<div align="center">
+<a href="https://youtu.be/_0vNESb3Ww8"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%sssss%20adhitthana.png?token=AINQE272IQWZF3THTK6POE27RFGMG" alt="Click to view aerate's demo" ></a>
+</div>
+
 # Getting Started
 
-### View Demo (aerate Web Dashboard):
+### View Demo:
 
-- [https://aerate.web.app/](https://aerate.web.app/)
+- [https://aerate.web.app/](https://aerate.web.app/) - aerate Web Dashboard
+- [https://youtu.be/\_0vNESb3Ww8](https://youtu.be/_0vNESb3Ww8) - Recorded demo
 
 ### User Manual:
 
@@ -184,5 +191,4 @@ On the other hand, the software component is a web app. It is responsible for re
 </div> -->
 <div align="center">
 <a href="https://aerate.web.app/"><img src="https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/aerate%20end%20card.png?token=AINQE25G2TJ4ATHKBW55RTS7RFKVQ" alt="Ducktionary Icon" ></a>
-
 </div>
