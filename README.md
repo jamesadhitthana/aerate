@@ -65,16 +65,20 @@ Chemicals in experimentations involved may displace oxygen in a room and cause d
 
 The hardware consists of an Arduino and its IoT modules, essentially small electronic devices such as the sensors, LCD, Wi-Fi chip, and more components. It is responsible for monitoring all sensor data, displaying it on the LCD, and sending the monitored data through a Wi-Fi internet connection towards a firebase cloud database.
 
-| ID    | Planned Hardware Features                                                                                                    | Status | HC  |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------- | ------ | :-: |
-| REQH1 | Sensors specific to pollutant being monitored (to increase accuracy)                                                         | Pass   |     |
-| REQH2 | Plug & play automatic configuration and Wi-Fi connectivity                                                                   | Pass   |     |
-| REQH3 | LCD display to view real-time sensor readings                                                                                | Pass   |     |
-| REQH4 | Real time clock to keep track of date and time (timestamp)                                                                   | Pass   |     |
-| REQH5 | Hardware sends sensor readings on a set interval (ex: 30 seconds) to the cloud database through Wi-Fi internet connectivity. | Pass   |     |
-| REQH6 | Buzzer beeps (alarm sound) when a pollutant is detected over a safety threshold.                                             | Pass   |     |
-| REQH7 | LED flashes when a pollutant is detected over a safety threshold.                                                            | Pass   |     |
-| REQH8 | Push button to change settings.                                                                                              | Pass   |     |
+<!-- Table -->
+
+| ID    | Hardware Features                                                                                                            | Status |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------- | ------ |
+| REQH1 | Sensors specific to pollutant being monitored (to increase accuracy)                                                         | Pass   |
+| REQH2 | Plug & play automatic configuration and Wi-Fi connectivity                                                                   | Pass   |
+| REQH3 | LCD display to view real-time sensor readings                                                                                | Pass   |
+| REQH4 | Real time clock to keep track of date and time (timestamp)                                                                   | Pass   |
+| REQH5 | Hardware sends sensor readings on a set interval (ex: 30 seconds) to the cloud database through Wi-Fi internet connectivity. | Pass   |
+| REQH6 | Buzzer beeps (alarm sound) when a pollutant is detected over a safety threshold.                                             | Pass   |
+| REQH7 | LED flashes when a pollutant is detected over a safety threshold.                                                            | Pass   |
+| REQH8 | Push button to change settings.                                                                                              | Pass   |
+
+<!-- END OF: Table -->
 
 ![aerate-hardware-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/hardware%20aerate%20james%20adhitthana.PNG?token=AINQE25IGVJUBHVKCWLEFX27RCCYG)
 
