@@ -86,9 +86,38 @@ The hardware consists of an Arduino and its IoT modules, essentially small elect
 
 On the other hand, the software component is a web app. It is responsible for receiving data on the database, processing it with multiple calculations, and then visualizing it to inform the user of the US Air Quality Index, air quality score, pollutant concentration, humidex, and other relevant information.
 
+<!-- Software Table -->
+
+| ID     | Software Features                                                                                                                                         | Category                         | Status |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------ |
+| REQS1  | Software created is a dashboard progressive web application with a main dashboard page containing an overview of all sensors and air quality of the room. | Software Design                  | Pass   |
+| REQS2  | Software contains individual pollutant pages that shows each specific pollutant concentration in detail and why the pollutant is dangerous                | Software Design                  | Pass   |
+| REQS3  | Software is designed with User Friendliness in mind.                                                                                                      | Software Design                  | Pass   |
+| REQS4  | Supports asynchronous communication (allows for resynchronization of data when internet connection is slow)                                               | Software Design                  | Pass   |
+| REQS5  | Real-time US Air Quality Index Calculation                                                                                                                | Calculation, Interactive Feature | Pass   |
+| REQS6  | Real-time air quality score from 0-100% (unsafe: 0%, optimized: 100%) calculation                                                                         | Calculation, Interactive Feature | Pass   |
+| REQS7  | Real-time humidex calculation                                                                                                                             | Calculation, Interactive Feature | Pass   |
+| REQS8  | Real-time Pollutant concentration viewer                                                                                                                  | Interactive Feature              | Pass   |
+| REQS9  | Real-time data overview graphs                                                                                                                            | Interactive Feature              | Pass   |
+| REQS10 | Real-time perceived temperature (Humidex) gauge                                                                                                           | Interactive Feature              | Pass   |
+| REQS11 | Historical data graph to view and compare average historical data using the respective truncated means.                                                   | Interactive Feature              | Pass   |
+| REQS12 | Dynamically generated data table that shows raw sensor data (raw CSV data sent from the Arduino)                                                          | Interactive Feature              | Pass   |
+| REQS13 | Datepicker that allows picking and viewing data specific to the chosen date                                                                               | Interactive Feature              | Pass   |
+| REQS14 | User Friendly UI with overview icons that changes colors according to the safety levels.                                                                  | Interactive Feature              | Pass   |
+| REQS15 | Optimization tips are generated and displayed according to the pollutant monitored.                                                                       | Interactive Feature              | Pass   |
+| REQS16 | Push notifications and alerts for pollutants going over a dangerous threshold                                                                             | Interactive Feature              | Pass   |
+| REQS17 | Alerts Centre to collect all previous notifications                                                                                                       | Interactive Feature              | Pass   |
+| REQS18 | User Login/Logout/Register                                                                                                                                | Interactive Feature              | Pass   |
+
+<!-- END OF: Software Table -->
+
 ![aerate-software-gallery](https://raw.githubusercontent.com/jamesadhitthana/aerate/main/Documentation/software%20aerate%20james%20adhitthana.png?token=AINQE272IQWZF3THTK6POE27RFGMG)
 
 # Getting Started
+
+### View Demo (aerate Web Dashboard):
+
+- [https://aerate.web.app/](https://aerate.web.app/)
 
 ### User Manual:
 
@@ -102,7 +131,8 @@ On the other hand, the software component is a web app. It is responsible for re
 
 - On esp.ino, define your own FIREBASE_HOST and FIREBASE_AUTH using your own Firebase credentials (if you don't have one, you need to create one first on firebase.google.com).
 - On login.html, register.html, unified.js, and index.html, change the Firebase API Keys to your own.
-- aerate was built for my university dissertation and therefore we will not be liable for any loss or damage of any nature.
+- aerate was built for my university thesis/dissertation and therefore we will not be liable for any loss or damage of any nature.
+- Contact me (James) if you have questions or would like to work with me on developing aerate further.
 
 ## Built With
 
