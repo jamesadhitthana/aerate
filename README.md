@@ -164,6 +164,7 @@ Here is a recorded demo of the aerate in action: [https://youtu.be/\_0vNESb3Ww8]
 - [JavaScript](https://www.javascript.com/) - JavaScript
 - [Firebase](https://firebase.google.com/) - Firebase
 - [Bootstrap](https://getbootstrap.com/) - Bootstrap
+- [SB-Admin2](https://github.com/StartBootstrap/startbootstrap-sb-admin-2) - SB Admin 2
 - [JQuery](https://jquery.com/) - JQuery + JQueryUI
 - [IziToast](https://github.com/marcelodolza/iziToast) - IziToast
 - [Raphael.js](https://github.com/DmitryBaranovskiy/raphael) - Raphael.js
